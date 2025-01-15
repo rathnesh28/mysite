@@ -1,0 +1,74 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .companyInfo h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .companyInfo p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .quickLinks h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .quickLinks ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .quickLinks li {
+    margin: 5px 0;
+  }
+  
+  .quickLinks a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .quickLinks a:hover {
+    color: #ff5a5f;
+  }
+  
+  .socialMedia h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .icons a {
+    font-size: 20px;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .icons a:hover {
+    color: #ff5a5f;
+  }
+  
+  .copyright {
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 14px;
+  }
+  
