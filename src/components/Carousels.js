@@ -1,51 +1,70 @@
-import { Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'; // Import the icons
+import { useRef } from 'react'; // Import useRef for controlling the carousel instance
+import styles from '@/styles/Carousels.module.css'; // Import the CSS module
 
 function UncontrolledExample() {
+  // Create a reference to the Carousel component
+  const carouselRef = useRef(null);
+
+  // Handlers to navigate the carousel
+  const handlePrev = () => {
+    carouselRef.current?.prev(); // Trigger previous slide
+  };
+
+  const handleNext = () => {
+    carouselRef.current?.next(); // Trigger next slide
+  };
+
   return (
-  <>
-  
-  <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100 mh-25 h-25"
-          src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+    <>
+      <Carousel
+        ref={carouselRef} // Attach the ref to the Carousel component
+        interval={1000}
+        pause="hover"
+        controls={false} // Disable default controls
+        indicators={false}
+        wrap={true}
+      >
+        <Carousel.Item>
+          <img
+            className={`d-block w-100 ${styles.carouselImage}`}
+            src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="First slide"
+          />
+        </Carousel.Item>
 
-      <Carousel.Item>
-        <img
-          className="d-block w-100 mh-25 h-25"
-          src="https://images.pexels.com/photos/135940/pexels-photo-135940.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className={`d-block w-100 ${styles.carouselImage}`}
+            src="https://images.pexels.com/photos/135940/pexels-photo-135940.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="Second slide"
+          />
+        </Carousel.Item>
 
-      <Carousel.Item>
-        <img
-          className="d-block w-100  mh-25 h-25"
-          src="https://images.pexels.com/photos/668465/pexels-photo-668465.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+        <Carousel.Item>
+          <img
+            className={`d-block w-100 ${styles.carouselImage}`}
+            src="https://images.pexels.com/photos/668465/pexels-photo-668465.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
 
-  </>
+      {/* Custom Carousel Controls */}
+      <div
+        className={styles.carouselControlPrev}
+        onClick={handlePrev} // Handle the previous button click
+      >
+        <FaArrowAltCircleLeft className={styles.carouselIcon} />
+      </div>
+      <div
+        className={styles.carouselControlNext}
+        onClick={handleNext} // Handle the next button click
+      >
+        <FaArrowAltCircleRight className={styles.carouselIcon} />
+      </div>
+    </>
   );
 }
 
