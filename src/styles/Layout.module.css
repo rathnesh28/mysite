@@ -4,10 +4,3 @@
     min-height: 100vh;
   }
   
-  .mainContent {
-    flex: 1;
-    padding-top: 70px; /* Adjust to match the header's height */
-    padding-bottom: 20px; /* Space for the footer */
-    background-color: #f9f9f9;
-  }
-  
