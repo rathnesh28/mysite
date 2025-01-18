@@ -36,7 +36,7 @@
   /* Hover effect for custom control buttons */
   .carouselControlPrev:hover,
   .carouselControlNext:hover {
-    background-color: rgba(255, 0, 119, 0.712); /* Darker background on hover */
+    background-color: rgba(255, 0, 119, 0.44); /* Darker background on hover */
   }
   
   /* Styling the icons inside the controls */
