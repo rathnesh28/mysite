@@ -6,70 +6,83 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import styles from '@/styles/Header.module.css';
+import Banner from '@/components/Topheader';
 
-function BrandExample() {
+
+function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true); // State for banner visibility
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleCloseBanner = () => {
+    setIsBannerVisible(false); // Close the banner
+  };
+
   return (
-    <Navbar
-      expand="lg"
-      fixed="top"
-      className={`${styles.Navbar} ${scrolled ? styles.scrolled : ''}`}
-    >
-      <Container>
-        {/* Brand Logo */}
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src="/next.svg"
-            width="90"
-            height="40"
-            className="d-inline-block align-top"
-          />
-        </Navbar.Brand>
+    <>
+      {/* Render the Banner if it's visible */}
+      {isBannerVisible && <Banner onClose={handleCloseBanner} />}
+      
+      {/* Navbar */}
+      <Navbar
+        expand="lg"
+        fixed="top"
+        className={`${styles.Navbar} ${scrolled ? styles.scrolled : ''} ${isBannerVisible ? styles.navbarWithBanner :  styles.navbarWithOutBanner}`}
+      >
+        <Container>
+          {/* Brand Logo */}
+          <Navbar.Brand href="#home">
+            <img
+              alt="Logo"
+              src="/next.svg"
+              width="90"
+              height="40"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
 
-        {/* Toggle Button for Mobile */}
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          {/* Toggle Button for Mobile */}
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-        <Navbar.Collapse id="responsive-navbar-nav">
-          {/* Navigation Links */}
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-            <Nav.Link href="#shop">Shop</Nav.Link>
-          </Nav>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            {/* Navigation Links */}
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="#shop">Shop</Nav.Link>
+            </Nav>
 
-          {/* Right Section with Search, User, and Cart Icons */}
-          <Form className="d-flex">
-            <Button variant="outline-success" className={styles.searchButton}>
-              <FaSearch />
-            </Button>
-          </Form>
-          <Nav>
-            <Nav.Link href="#user">
-              <FaUser className={styles.icon} />
-            </Nav.Link>
-            <Nav.Link href="#cart">
-              <FaShoppingCart className={styles.icon} />
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            {/* Right Section */}
+            <div className="d-flex align-items-center">
+              {/* Search Form */}
+              <Form className="d-flex me-3">
+                <Button variant="outline-success" className={styles.searchButton}>
+                  <FaSearch />
+                </Button>
+              </Form>
+              <Nav>
+                <Nav.Link href="#user">
+                  <FaUser className={styles.icon} />
+                </Nav.Link>
+                <Nav.Link href="#cart">
+                  <FaShoppingCart className={styles.icon} />
+                </Nav.Link>
+              </Nav>
+            </div>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 }
 
-export default BrandExample;
+export default Header;

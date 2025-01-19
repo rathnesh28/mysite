@@ -1,0 +1,59 @@
+/* components/Banner.module.css */
+
+.ribbonContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fa0351;
+    padding: 10px 0;
+    overflow: hidden;
+    z-index: 9999;
+  }
+  
+  .ribbonInnerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #212121;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    max-height: 15px;
+    padding: 5px 0;
+    position: relative;
+  }
+  
+  .ribbonLink {
+    color: beige;
+    text-decoration: none;
+  }
+  
+  .ribbonInnerTag {
+    color: white;
+    cursor: pointer;
+  }
+  
+  .bannerCloseButton {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.483);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 8px;
+    height: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* For responsiveness */
+  @media (max-width: 768px) {
+    .ribbonInnerContent {
+      font-size: 12px;
+    }
+  }
+  

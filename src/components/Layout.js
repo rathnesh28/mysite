@@ -5,7 +5,7 @@ import styles from '@/styles/Layout.module.css';
 
 export default function Layout({ children, meta }) {
   return (
-    <div className={styles.container}>
+    <div >
       <Head>
         <title>{meta?.title || 'MyShop'}</title>
         <meta name="description" content={meta?.description || 'Your one-stop e-commerce shop'} />
